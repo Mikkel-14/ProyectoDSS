@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="AppBancaria:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>AppBancaria</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="AppBancaria-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="AppBancaria:war exploded" />
+    </root>
+  </artifact>
+</component>
