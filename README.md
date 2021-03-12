@@ -1,4 +1,4 @@
-#Proyecto Desarrollo de Software Seguro 2020B
+# Proyecto Desarrollo de Software Seguro 2020B
 
 
 En este proyecto se desarrollará una aplicación bancaria de escritorio básica que permita la visualización de movimientos de cuenta, consulta de saldos, transferencias bancarias, 
@@ -14,7 +14,7 @@ algoritmos criptográficos:
   * Algoritmos Deterministas
 
 
-#Agradecimientos
+# Agradecimientos
 
 
 A la Ing. Gabriela Suntaxi, PhD., por la revisión del alcance del proyecto y la facilitación de las herramientas y algoritmos de cifrado.
