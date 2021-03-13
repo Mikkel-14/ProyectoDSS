@@ -62,6 +62,11 @@
                 <a href="registroUsuarios.jsp">¿No tienes cuenta? Regístrate</a>
             </div>
         </div>
+        <div class="row mx-auto">
+            <div class="col my-auto mx-auto">
+                <div class="text-danger">${mensajeError}</div>
+            </div>
+        </div>
     </form>
 </div>
 <script

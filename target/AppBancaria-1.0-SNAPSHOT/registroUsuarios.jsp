@@ -3,6 +3,7 @@
 <c:set var="Cedula" scope="request" value="${Cedula}"/>
 <c:set var="Nombre" scope="request" value="${Nombre}"/>
 <c:set var="Apellido" scope="request" value="${Apellido}"/>
+<c:set var="Apellido" scope="request" value="${Telefono}"/>
 <c:set var="mensajeError" scope="request" value="${mensajeError}"/>
 <c:set var="mensajeExito" scope="request" value="${mensajeExito}"/>
 <!DOCTYPE html>
@@ -25,7 +26,7 @@
 <body>
 <div class="container-fluid d-flex flex-column justify-content-center"
      id="altura" >
-    <form class="bg-white rounded-3 container shadow-sm" action="registrarEstudianteController" method="POST">
+    <form class="bg-white rounded-3 container shadow-sm" action="registrarController" method="POST">
         <div class="row mb-3">
             <h3>Registrarse</h3>
             <h4>Banca Web</h4>
@@ -51,8 +52,17 @@
             <input type="text" class="form-control" id="apellido"
                    placeholder="Apellido" name="apellido" required value="<c:out value="${Apellido}"/>">
         </div>
-        <div class="row px-4">
-            <label for="passwd" class="form-label">Contraseña</label>
+
+            <div class="row px-4">
+                <label for="telefono" class="form-label">Teléfono</label>
+            </div>
+            <div class="row px-4 mb-3">
+                <input type="text" class="form-control" id="telefono"
+                       placeholder="Teléfono" name="telefono" required value="<c:out value="${Telefono}"/>">
+            </div>
+
+    <div class="row px-4">
+        <label for="passwd" class="form-label">Contraseña</label>
         </div>
         <div class="row px-4 mb-2">
             <input type="password" class="form-control" id="passwd"

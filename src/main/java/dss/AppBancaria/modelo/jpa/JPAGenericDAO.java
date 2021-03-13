@@ -15,6 +15,7 @@ public  class JPAGenericDAO <T,ID> implements GenericDAO<T, ID> {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("dssbank");
         em = emf.createEntityManager();
         this.persistenceClass=persistenceCls;
+
     }
 
     @Override
@@ -78,7 +79,5 @@ public  class JPAGenericDAO <T,ID> implements GenericDAO<T, ID> {
         }
 
     }
-
-
 
 }
