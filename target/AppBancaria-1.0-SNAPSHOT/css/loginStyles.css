@@ -1,0 +1,30 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(251, 249, 246);
+    font-family: 'Poppins';
+    color: #2f3640;
+}
+
+form {
+    width: 30% !important;
+    padding: 2% 5%;
+}
+
+h2, h3, h4 {
+    text-align: center;
+}
+
+h4 {
+    color: gray;
+}
+
+a {
+    text-decoration: none;
+}
+
+#altura {
+    height: 100%;
+}
