@@ -1,0 +1,78 @@
+
+html, body{
+    height: 100%;
+}
+body {
+    background-color: #fbf9f6;
+    font-family: 'Poppins';
+    color: #2f3640;
+}
+.purpura{
+    background-color: #0a3d62;
+    color: white;
+    font-weight: 600;
+}
+
+.purpura2{
+    background-color: #07385d;
+}
+nav{
+    text-align: end;
+}
+
+a{
+    color: white !important;
+}
+a:hover{
+    background-color: white;
+    color:black !important;
+}
+
+.btn-primary{
+    width: 100%;
+    background-color:  #0a3d62;
+    border-color:  #0a3d62;
+}
+
+.btn-primary:hover{
+    background-color: #07385d;
+    border-color: #07385d;
+}
+#altura{
+    height:100%;
+}
+.edicion{
+    background-color: inherit !important;
+    color:black !important;
+}
+
+nav div a {
+    background-color:inherit !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+nav div a:hover {
+    color: white !important;
+    font-weight: 800 !important;
+}
+#acciones{
+    width: 35%
+}
+
+li:hover {
+    background-color: white;
+}
+ul li  a:hover{
+    color: black !important;
+}
+
+.imgDiv{
+    background-image: url("../img/6.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.aOn {
+    background-color: white;
+    color: black !important;
+}
