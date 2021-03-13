@@ -31,8 +31,8 @@
         </div>
         <div class="col-3 d-flex flex-row justify-content-end align-items-center">
             <div class="col-3 d-flex flex-row justify-content-end align-items-center">
-                <a href="ModuloUsuario.jsp" class="btn">Usuario</a>
-                <a href="cerrarSesionController" class="btn"><i class="fas fa-sign-out-alt is"></i></a>
+                <a href="ModuloUsuarioController" class="btn">Usuario</a>
+                <a href="CerrarSesionController" class="btn"><i class="fas fa-sign-out-alt is"></i></a>
             </div>
         </div>
     </nav>

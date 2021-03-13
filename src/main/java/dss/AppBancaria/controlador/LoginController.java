@@ -74,5 +74,4 @@ public class LoginController extends HttpServlet {
             getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
         }
     }
-
 }

@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Transferencia</title>
+    <title>Listar Movimientos</title>
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -41,20 +41,46 @@
         <!-- una fila con dos columnas: la primera es la navegacion izq
        y la segunda el espacio en blanco-->
         <div class="col-2 purpura2 d-flex flex-column justify-content-start">
-            <a class="btn py-3 my-4 text-center aOn" href="#">Transferencia</a>
-            <a class="btn py-3 my-4 text-center" href="listarMovimientoController">Listar Movimientos</a>
+            <a class="btn py-3 my-4 text-center " href="transferenciaController">Transferencia</a>
+            <a class="btn py-3 my-4 text-center aOn" href="#">Listar Movimientos</a>
         </div>
-        <div class="col-10 position-relative imgDiv" >
-            <form action="transferenciaController" class="info position-absolute top-50 start-50 translate-middle" method="post">
-                <label class="fs-3 form-label">Numero de Cuenta</label><br>
-                <input class=" fs-4 text-secondary form-control"type="text" placeholder="1234567890" readonly><br>
-                <label class="mt-5 fs-3 form-label ">Cuenta a Transferir</label><br>
-                <input class=" fs-4 text-secondary form-control"type="text" placeholder="Cuenta a Transferir" name="cuentaDestino"><br>
-                <label class="mt-5 fs-3 form-label form-label">Valor</label><br>
-                <input class="fs-4 text-secondary form-control"type="text" placeholder="00.0$" name="valor"><br>
-                <input type="submit" class="mt-5 btn btn-primary" value="Transferir">
-            </form>
+    <div class="col-10">
+        <div class="container-fluid d-flex flex-column justify-content-start" >
+            <div class="row my-4">
+                <table class="shadow-sm rounded-3">
+                    <thead class="bg-primary bg-gradient text-center text-light">
+                        <tr>
+                            <th style="width: 33%">ID Movimiento</th>
+                            <th style="width: 33%">Monto</th>
+                            <th style="width: 33%">Fecha</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                <c:choose>
+                    <c:when test="${nomina==null}">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row mx-auto mb-4">No hay elementos para mostrar.</div>
+               <!-- </c:when>
+                <c:when test="${nomina!=null}">
+                    <c:forEach var="d" items="${nomina}">
+                        <tr>
+                            <td>${d.idMovimiento}</td>
+                            <td>${d.monto}</td>
+                            <td>${d.fecha}</td>
+                            <td>
+                                <form style="display: inline-block;" method="POST" action="listarDocenteController">
+                                    <button type="submit" class="btn edicion" value="${d.cedula}" name="del"><i class="far fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    </c:forEach>-->
+                    </tbody>
+                    </table>
         </div>
+    </div>
     </div>
 </div>
 
