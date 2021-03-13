@@ -2,6 +2,7 @@ package dss.AppBancaria.modelo.entidad;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ public class Movimiento implements Serializable {
     private Integer id;
 
     @Column(name = "monto")
-    private Double monto;
+    private BigInteger monto;
 
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
@@ -26,7 +27,7 @@ public class Movimiento implements Serializable {
     public Movimiento() {
     }
 
-    public Movimiento(Double monto, Date fecha, Cuenta cuenta) {
+    public Movimiento(BigInteger monto, Date fecha, Cuenta cuenta) {
         this.monto = monto;
         this.fecha = fecha;
         this.cuenta = cuenta;
@@ -36,7 +37,7 @@ public class Movimiento implements Serializable {
         return id;
     }
 
-    public Double getMonto() {
+    public BigInteger getMonto() {
         return monto;
     }
 
@@ -52,7 +53,7 @@ public class Movimiento implements Serializable {
         this.id = id;
     }
 
-    public void setMonto(Double monto) {
+    public void setMonto(BigInteger monto) {
         this.monto = monto;
     }
 

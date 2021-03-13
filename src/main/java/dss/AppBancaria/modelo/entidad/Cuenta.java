@@ -2,6 +2,7 @@ package dss.AppBancaria.modelo.entidad;
 import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.*;
 import java.io.Serializable;
 
@@ -17,7 +18,7 @@ public class Cuenta implements Serializable {
     private Integer id;
 
     @Column(name = "saldo_actual", nullable = false)
-    private Double saldoActual;
+    private BigInteger saldoActual;
 
     @OneToOne
     @JoinColumn(name = "usuarioId")
@@ -34,9 +35,13 @@ public class Cuenta implements Serializable {
     public Cuenta(){
     }
 
-    public Cuenta( Double saldoActual, Usuario usuario){
+    public Cuenta( BigInteger saldoActual, Usuario usuario){
         this.saldoActual = saldoActual;
         this.usuario = usuario;
+    }
+
+    public Cuenta(BigInteger saldoActual){
+        this.saldoActual = saldoActual;
     }
 
     public Integer getId() {
@@ -44,7 +49,7 @@ public class Cuenta implements Serializable {
     }
 
 
-    public Double getSaldoActual() {
+    public BigInteger getSaldoActual() {
         return saldoActual;
     }
 
@@ -64,7 +69,7 @@ public class Cuenta implements Serializable {
         this.listaTransferencias = listaTransferencias;
     }
 
-    public void setSaldoActual(Double saldoActual) {
+    public void setSaldoActual(BigInteger saldoActual) {
         this.saldoActual = saldoActual;
     }
 

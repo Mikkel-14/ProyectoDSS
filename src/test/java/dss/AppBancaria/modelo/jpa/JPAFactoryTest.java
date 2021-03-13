@@ -8,19 +8,19 @@ import dss.AppBancaria.modelo.entidad.Usuario;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
 import static org.junit.Assert.*;
 public class JPAFactoryTest{
-    private Cuenta c = new Cuenta(500.0, null);
-    //@Before
+    private Cuenta c = new Cuenta(new BigInteger("500"));
+    private Usuario user = new Usuario("1723171714","abc123","Miguel", "Munoz", c);
+    /*@Before*/
     @Test
     public void when_crearUsuarioDAO_then_insercionYlecturaOK(){
         DaoFactory fabrica = new JPAFactory();
-        Usuario user = new Usuario("1723171714","abc123","Miguel", "Munoz", c);
-        c.setUsuario(user);
         fabrica.creaUsuarioDAO().crear(user);
         assertEquals(user,fabrica.creaUsuarioDAO().leer("1723171714"));
     }
@@ -28,18 +28,21 @@ public class JPAFactoryTest{
     @Test
     public void when_crearCuentaDAO_then_lecturaOK(){
         DaoFactory fabrica = new JPAFactory();
-        assertEquals(this.c.getId(),fabrica.crearCuentaDAO().leer(1).getId());
+        Integer id = 100000;
+        assertEquals(id,fabrica.crearCuentaDAO().leer(100000).getId());
     }
 
     @Test
     public void when_crearMovimientoDAO_then_creacionOK(){
+        DaoFactory fabrica = new JPAFactory();
         Date in = new Date();
         LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.systemDefault());
         Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
-        Movimiento mov = new Movimiento(-30.0,out,this.c);
-        DaoFactory fabrica = new JPAFactory();
+        Cuenta c1 = fabrica.crearCuentaDAO().leer(100000);
+        Movimiento mov = new Movimiento(new BigInteger("-30"),out,c1);
         fabrica.crearMovimientoDAO().crear(mov);
-        assertEquals(mov, fabrica.crearMovimientoDAO().leer(1));
+        Integer id = 1;
+        assertEquals(id, fabrica.crearMovimientoDAO().leer(1).getId());
     }
 
     @Test

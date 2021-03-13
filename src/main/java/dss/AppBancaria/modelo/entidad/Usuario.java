@@ -3,6 +3,7 @@ package dss.AppBancaria.modelo.entidad;
 import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import javax.persistence.*;
 
 @Entity
@@ -36,13 +37,14 @@ public class Usuario implements Serializable{
         this.nombre = nombre;
         this. apellido = apellido;
         this.cuenta = cuenta;
+        this.cuenta.setUsuario(this);
     }
     public Usuario (String numCedula,String password, String nombre, String apellido){
         this.numCedula = numCedula;
         this.password = password;
         this.nombre = nombre;
         this. apellido = apellido;
-        this.cuenta = new Cuenta(0.0,this);
+        this.cuenta = new Cuenta(new BigInteger("0"),this);
     }
 
     public String getNumCedula() {

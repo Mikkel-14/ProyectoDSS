@@ -1,9 +1,11 @@
 package dss.AppBancaria.controlador;
 
+import dss.AppBancaria.controlador.seguridad.Paillier;
 import dss.AppBancaria.controlador.seguridad.Sha3;
 import dss.AppBancaria.controlador.seguridad.Validacion;
 import dss.AppBancaria.controlador.seguridad.AES;
 import dss.AppBancaria.modelo.dao.DaoFactory;
+import dss.AppBancaria.modelo.entidad.Cuenta;
 import dss.AppBancaria.modelo.entidad.Usuario;
 import dss.AppBancaria.modelo.jpa.JPAFactory;
 
@@ -11,6 +13,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.math.BigInteger;
 
 @WebServlet(name = "registrarController", value = "/registrarController")
 public class RegistrarController extends HttpServlet {
@@ -74,7 +77,6 @@ public class RegistrarController extends HttpServlet {
         try {
             Usuario usr = fabrica.creaUsuarioDAO().leer(cipher.cifrar(cedula));
             if (usr != null){
-
                 request.setAttribute("mensajeError","Usuario ya existe");
             }else{
                 String cedulaCifrada=cipher.cifrar(cedula);
@@ -85,8 +87,8 @@ public class RegistrarController extends HttpServlet {
                 String password = request.getParameter("password");
                 Sha3 sha = new Sha3();
                 String hPass = sha.valorHash(password);
-
-                usr = new Usuario(cedulaCifrada,hPass,nombre,apellido);
+                Cuenta nuevaCuenta = new Cuenta(Paillier.getInstance().encrypt(new BigInteger("5000")));
+                usr = new Usuario(cedulaCifrada,hPass,nombre,apellido, nuevaCuenta);
                 fabrica.creaUsuarioDAO().crear(usr);
                 request.setAttribute("mensajeExito","Se ha registrado el usuario");
                 getServletContext().getRequestDispatcher("/registroUsuarios.jsp").forward(request, response);

@@ -2,6 +2,7 @@ package dss.AppBancaria.modelo.entidad;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.Objects;
 
@@ -21,7 +22,7 @@ public class Transferencia implements Serializable {
     private Cuenta cuentaReceptora;
 
     @Column(name = "monto")
-    private Double monto;
+    private BigInteger monto;
 
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
@@ -30,7 +31,7 @@ public class Transferencia implements Serializable {
     public Transferencia() {
     }
 
-    public Transferencia(Cuenta cuentaEmisora, Cuenta cuentaReceptora, Double monto, Date fecha) {
+    public Transferencia(Cuenta cuentaEmisora, Cuenta cuentaReceptora, BigInteger monto, Date fecha) {
         this.cuentaEmisora = cuentaEmisora;
         this.cuentaReceptora = cuentaReceptora;
         this.monto = monto;
@@ -49,7 +50,7 @@ public class Transferencia implements Serializable {
         return cuentaReceptora;
     }
 
-    public Double getMonto() {
+    public BigInteger getMonto() {
         return monto;
     }
 
@@ -69,7 +70,7 @@ public class Transferencia implements Serializable {
         this.cuentaReceptora = cuentaReceptora;
     }
 
-    public void setMonto(Double monto) {
+    public void setMonto(BigInteger monto) {
         this.monto = monto;
     }
 
