@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-
 <head>
+        <c:choose>
+        <c:when test="${(empty sessionScope.usuario) }">
+            <meta http-equiv="refresh" content="0; url=index.jsp"/>
+            </head>
+
+        </c:when>
+        <c:otherwise>
     <meta charset="ISO-8859-1">
     <title>Transferencia</title>
     <link
@@ -66,4 +72,6 @@
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
 </body>
+</c:otherwise>
+</c:choose>
 </html>
