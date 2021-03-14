@@ -46,7 +46,7 @@
             <!-- una fila con dos columnas: la primera es la navegacion izq
            y la segunda el espacio en blanco-->
             <div class="col-2 purpura2 d-flex flex-column justify-content-start">
-                <a class="btn py-3 my-4 text-center" href="#">Transferencia</a>
+                <a class="btn py-3 my-4 text-center" href="transferenciaController">Transferencia</a>
                 <a class="btn py-3 my-4 text-center" href="listarMovimientoController">Listar Movimientos</a>
                 <a class="btn py-3 my-4 text-center aOn" href="#">Cambiar Contraseña</a>
             </div>
