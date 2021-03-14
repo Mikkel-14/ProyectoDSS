@@ -28,4 +28,16 @@ public class ValidacionTest {
         String nombre = "<script>alert('no estoy durmiendo');</script>";
         assertFalse(Validacion.validadorStrings(nombre));
     }
+
+    @Test
+    public void when_ingresaSaldoValido_then_ok(){
+        String saldo = "98.00";
+        assertTrue(Validacion.validadorSaldo(saldo));
+    }
+    @Test
+    public void when_ingresaCuentaValida_then_ok(){
+        String cuenta = "10000001";
+        assertTrue(Validacion.validadorCuenta(cuenta));
+    }
+
 }
