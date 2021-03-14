@@ -58,17 +58,17 @@ public class LoginController extends HttpServlet {
                     response.addCookie(galletaBandera);
 
                     HttpSession sesion = request.getSession();
-                    sesion.setAttribute("usuario", cedulaC);
-                    getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+                    sesion.setAttribute("usuario", usr);
 
-
-                    //TODO dirigir a la siguiente
+                    getServletContext().getRequestDispatcher("/ModuloUsuarioController").forward(request,response);
 
                 }else{
                     request.setAttribute("mensajeError","Usuario o contraseña incorrectos");
                     getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
                 }
-            } catch (Exception e){}
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         } else{
             request.setAttribute("mensajeError","El usuario debe ser una cedula valida");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);

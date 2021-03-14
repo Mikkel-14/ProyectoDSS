@@ -73,5 +73,16 @@ public class Validacion {
 
     }
 
+    public static boolean validadorSaldo(String cadena) {
+        boolean resultado=false;
+        Pattern p = Pattern.compile("[1-9]{1}[0-9]*.[0,9]{2}");
+        Matcher validar= p.matcher(cadena);
+        if(validar.matches()){
+            resultado=true;
+        }
+        return resultado;
+
+    }
+
 
 }

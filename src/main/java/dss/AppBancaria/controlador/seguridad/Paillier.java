@@ -18,7 +18,8 @@ public class Paillier
 
     public static Paillier getInstance() throws Exception{
         if(instancia ==null){
-            return new Paillier(10);
+            instancia = new Paillier(25);
+            return instancia;
         }
         return instancia;
     }

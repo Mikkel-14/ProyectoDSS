@@ -46,12 +46,12 @@
         </div>
         <div class="col-10 position-relative imgDiv" >
             <div class="info position-absolute top-50 start-50 translate-middle">
-                <label class="fs-3">Numero de Cuenta</label><br>
-                <label class="ps-5 fs-4 text-secondary">123567890</label><br>
+                <label class="fs-3">Número de Cuenta</label><br>
+                <label class="ps-5 fs-4 text-secondary">${numCuenta}</label><br>
                 <label class="mt-5 fs-3">Usuario</label><br>
-                <label class="ps-5 fs-4 text-secondary">Miguel Munoz</label><br>
+                <label class="ps-5 fs-4 text-secondary">${nombresCompletos}</label><br>
                 <label class="mt-5 fs-3">Saldo Actual</label><br>
-                <label class="ps-5 fs-4 text-secondary">500.56$</label><br>
+                <label class="ps-5 fs-4 text-secondary">$ ${saldo}</label><br>
             </div>
 
         </div>

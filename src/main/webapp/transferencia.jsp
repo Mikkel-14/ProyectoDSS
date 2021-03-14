@@ -46,14 +46,17 @@
         </div>
         <div class="col-10 position-relative imgDiv" >
             <form action="transferenciaController" class="info position-absolute top-50 start-50 translate-middle" method="post">
-                <label class="fs-3 form-label">Numero de Cuenta</label><br>
-                <input class=" fs-4 text-secondary form-control"type="text" placeholder="1234567890" readonly><br>
+                <label class="fs-3 form-label">Número de Cuenta</label><br>
+                <input class=" fs-4 text-secondary form-control"type="text" value="${numCuenta}" readonly required><br>
                 <label class="mt-5 fs-3 form-label ">Cuenta a Transferir</label><br>
-                <input class=" fs-4 text-secondary form-control"type="text" placeholder="Cuenta a Transferir" name="cuentaDestino"><br>
+                <input class=" fs-4 text-secondary form-control"type="text" placeholder="Cuenta a Transferir" name="cuentaDestino" value="${numCuentaT}" required><br>
                 <label class="mt-5 fs-3 form-label form-label">Valor</label><br>
-                <input class="fs-4 text-secondary form-control"type="text" placeholder="00.0$" name="valor"><br>
+                <input class="fs-4 text-secondary form-control"type="text" placeholder="$ 00.0" name="valor" required><br>
                 <input type="submit" class="mt-5 btn btn-primary" value="Transferir">
+                <div class="text-danger">${mensajeError}</div>
+                <div class="text-success">${mensajeExitoso}</div>
             </form>
+
         </div>
     </div>
 </div>

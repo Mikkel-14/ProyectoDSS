@@ -87,7 +87,8 @@ public class RegistrarController extends HttpServlet {
                 String password = request.getParameter("password");
                 Sha3 sha = new Sha3();
                 String hPass = sha.valorHash(password);
-                Cuenta nuevaCuenta = new Cuenta(Paillier.getInstance().encrypt(new BigInteger("5000")));
+                BigInteger saldoBase = new BigInteger("5000");
+                Cuenta nuevaCuenta = new Cuenta(Paillier.getInstance().encrypt(saldoBase));
                 usr = new Usuario(cedulaCifrada,hPass,nombre,apellido, nuevaCuenta);
                 fabrica.creaUsuarioDAO().crear(usr);
                 request.setAttribute("mensajeExito","Se ha registrado el usuario");

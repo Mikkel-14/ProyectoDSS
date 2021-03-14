@@ -21,6 +21,7 @@ public class JPATransferenciaDAO extends JPAGenericDAO<Transferencia,Integer> im
 
     @Override
     public void realizarTransferencia(Cuenta cuentaEmisor, Cuenta receptora, BigInteger monto) {
+        //ALERTA: Este algoritmo supone que todos sus parametros se encuentran encriptados, sino no sirve
         LocalDateTime ldt = LocalDateTime.now();
         Date out = Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant());
         em.getTransaction().begin();
