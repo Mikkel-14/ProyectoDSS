@@ -33,6 +33,16 @@ public class JPATransferenciaDAO extends JPAGenericDAO<Transferencia,Integer> im
             em.getTransaction().commit();
             BigInteger montoDescontado = cipher.sumar(cuentaEmisor.getSaldoActual(),cipher.encrypt(monto.negate()));
             BigInteger montoAdd = cipher.sumar(receptora.getSaldoActual(),montoCifrado);
+            cuentaEmisor.setSaldoActual(montoDescontado);
+            receptora.setSaldoActual(montoAdd);
+            JPACuentaDAO d = new JPACuentaDAO();
+            d.actualizar(cuentaEmisor);
+            d.actualizar(receptora);
+            Movimiento movEmisor = new Movimiento(montoCifrado,out,cuentaEmisor,'-');
+            Movimiento movReceptor = new Movimiento(montoCifrado, out, receptora,'+');
+            JPAMovimientoDAO m = new JPAMovimientoDAO();
+            m.crear(movEmisor);
+            m.crear(movReceptor);
         }catch(Exception e){
             System.err.println("No se pudo realizar la transaccion");
             if(em.getTransaction().isActive()) {

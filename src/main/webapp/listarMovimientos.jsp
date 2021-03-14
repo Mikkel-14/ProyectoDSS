@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -42,7 +42,7 @@
        y la segunda el espacio en blanco-->
         <div class="col-2 purpura2 d-flex flex-column justify-content-start">
             <a class="btn py-3 my-4 text-center " href="transferenciaController">Transferencia</a>
-            <a class="btn py-3 my-4 text-center aOn" href="#">Listar Movimientos</a>
+            <a class="btn py-3 my-4 text-center aOn" href="listarMovimientoController">Listar Movimientos</a>
         </div>
     <div class="col-10">
         <div class="container-fluid d-flex flex-column justify-content-start" >
@@ -57,36 +57,33 @@
                     </thead>
                 <tbody>
                 <c:choose>
-                    <c:when test="${nomina==null}">
+                    <c:when test="${empty nomina}">
                     </tbody>
                 </table>
             </div>
 
             <div class="row mx-auto mb-4">No hay elementos para mostrar.</div>
-               <!-- </c:when>
-                <c:when test="${nomina!=null}">
+               </c:when>
+                <c:when test="${not empty nomina}">
                     <c:forEach var="d" items="${nomina}">
                         <tr>
-                            <td>${d.idMovimiento}</td>
-                            <td>${d.monto}</td>
-                            <td>${d.fecha}</td>
-                            <td>
-                                <form style="display: inline-block;" method="POST" action="listarDocenteController">
-                                    <button type="submit" class="btn edicion" value="${d.cedula}" name="del"><i class="far fa-trash-alt"></i></button>
-                                </form>
-                            </td>
+                            <td>${d.id}</td>
+                            <td>${d.tipo.toString().concat((d.monto.doubleValue()/100).toString())}</td>
+                             <td>${d.fecha.toString()}</td>
                         </tr>
-                    </c:forEach>-->
+                     </c:forEach>
                     </tbody>
-                    </table>
+             </table>
+                </c:when>
+            </c:choose>
+                </div>
+            </div>
+            </div>
         </div>
-    </div>
-    </div>
-</div>
 
-<script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+        <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+    </body>
+    </html>

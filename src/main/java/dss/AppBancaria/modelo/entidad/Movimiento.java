@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@NamedQuery(name = "listarMovimientos", query = "SELECT m FROM Movimiento m WHERE m.cuenta= :cuenta")
 public class Movimiento implements Serializable {
     @Id
     @Column(name = "id")
@@ -24,6 +25,9 @@ public class Movimiento implements Serializable {
     @JoinColumn(name = "cuentaId")
     private Cuenta cuenta;
 
+    @Column(name = "tipoMov")
+    private Character tipo;
+
     public Movimiento() {
     }
 
@@ -31,6 +35,16 @@ public class Movimiento implements Serializable {
         this.monto = monto;
         this.fecha = fecha;
         this.cuenta = cuenta;
+    }
+    public Movimiento(BigInteger monto, Date fecha, Cuenta cuenta, Character tipo) {
+        this.monto = monto;
+        this.fecha = fecha;
+        this.cuenta = cuenta;
+        this.tipo = tipo;
+    }
+
+    public Character getTipo() {
+        return tipo;
     }
 
     public Integer getId() {
@@ -63,6 +77,10 @@ public class Movimiento implements Serializable {
 
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
+    }
+
+    public void setTipo(Character tipo) {
+        this.tipo = tipo;
     }
 
     @Override

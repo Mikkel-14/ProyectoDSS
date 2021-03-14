@@ -17,7 +17,9 @@ import java.math.BigInteger;
 public class TransferenciaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Usuario usr = (Usuario)request.getSession().getAttribute("usuario");
+        String idusr = (String)request.getSession().getAttribute("usuario");
+        DaoFactory fabrica = new JPAFactory();
+        Usuario usr=fabrica.creaUsuarioDAO().leer(idusr);
         Integer numCuenta = usr.getCuenta().getId();
         request.setAttribute("numCuenta",numCuenta);
         getServletContext().getRequestDispatcher("/transferencia.jsp").forward(request,response);
@@ -25,15 +27,16 @@ public class TransferenciaController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        Usuario usr = (Usuario)request.getSession().getAttribute("usuario");
+        String idusr = (String)request.getSession().getAttribute("usuario");
+        DaoFactory fabrica = new JPAFactory();
+        Usuario usr=fabrica.creaUsuarioDAO().leer(idusr);
         Cuenta emisor = usr.getCuenta();
         Integer idCuentaAEnviar = Integer.parseInt(request.getParameter("cuentaDestino"));
-        DaoFactory fabrica = new JPAFactory();
         Cuenta aEnviar =fabrica.crearCuentaDAO().leer(idCuentaAEnviar);
         Double valor = Double.parseDouble(request.getParameter("valor"));
         if(aEnviar != null){
             try{
-                Double saldoEmisor = Paillier.getInstance().decrypt(emisor.getSaldoActual()).doubleValue();
+                Double saldoEmisor = Paillier.getInstance().decrypt(emisor.getSaldoActual()).doubleValue()/100;
                 if(saldoEmisor.compareTo(valor)<0){
                     request.setAttribute("numCuenta",usr.getCuenta().getId());
                     request.setAttribute("numCuentaT",idCuentaAEnviar);

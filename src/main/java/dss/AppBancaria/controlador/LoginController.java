@@ -58,7 +58,7 @@ public class LoginController extends HttpServlet {
                     response.addCookie(galletaBandera);
 
                     HttpSession sesion = request.getSession();
-                    sesion.setAttribute("usuario", usr);
+                    sesion.setAttribute("usuario", cedulaC);
 
                     getServletContext().getRequestDispatcher("/ModuloUsuarioController").forward(request,response);
 

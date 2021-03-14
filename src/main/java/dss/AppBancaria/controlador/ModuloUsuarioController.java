@@ -2,7 +2,9 @@ package dss.AppBancaria.controlador;
 
 import dss.AppBancaria.controlador.seguridad.AES;
 import dss.AppBancaria.controlador.seguridad.Paillier;
+import dss.AppBancaria.modelo.dao.DaoFactory;
 import dss.AppBancaria.modelo.entidad.Usuario;
+import dss.AppBancaria.modelo.jpa.JPAFactory;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,7 +16,10 @@ import java.math.BigInteger;
 public class ModuloUsuarioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Usuario usr = (Usuario)request.getSession().getAttribute("usuario");
+        String idusr = (String)request.getSession().getAttribute("usuario");
+        DaoFactory fabrica = new JPAFactory();
+
+        Usuario usr=fabrica.creaUsuarioDAO().leer(idusr);
         AES cipherC = new AES();
         try {
             String cedula = cipherC.decifrar(usr.getNumCedula());
