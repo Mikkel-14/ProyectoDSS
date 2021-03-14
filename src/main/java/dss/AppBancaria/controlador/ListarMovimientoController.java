@@ -32,16 +32,20 @@ public class ListarMovimientoController extends HttpServlet {
         Usuario usr =fabrica.creaUsuarioDAO().leer(cedulaC);
         List<Movimiento> movimientos = fabrica.crearMovimientoDAO().listarMovimientos(usr.getCuenta());
         List<Movimiento> mvts = new ArrayList<>();
-        if(movimientos.size() !=0) {
-            for (Movimiento mov : movimientos) {
-                BigInteger montoC = mov.getMonto();
-                try {
-                    mov.setMonto(Paillier.getInstance().decrypt(montoC));
-                    mvts.add(mov);
-                } catch (Exception e) {
-                    e.printStackTrace();
+        if (movimientos!=null) {
+            if (movimientos.size() != 0) {
+                for (Movimiento mov : movimientos) {
+                    BigInteger montoC = mov.getMonto();
+                    try {
+                        mov.setMonto(Paillier.getInstance().decrypt(montoC));
+                        mvts.add(mov);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
+        } else {
+            mvts=null;
         }
         request.setAttribute("nomina",mvts);
         getServletContext().getRequestDispatcher("/listarMovimientos.jsp").forward(request,response);
