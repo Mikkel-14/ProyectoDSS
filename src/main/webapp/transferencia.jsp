@@ -49,6 +49,7 @@
         <div class="col-2 purpura2 d-flex flex-column justify-content-start">
             <a class="btn py-3 my-4 text-center aOn" href="#">Transferencia</a>
             <a class="btn py-3 my-4 text-center" href="listarMovimientoController">Listar Movimientos</a>
+            <a class="btn py-3 my-4 text-center" href="cambiarContrasena.jsp">Cambiar Contraseña</a>
         </div>
         <div class="col-10 position-relative imgDiv" >
             <form action="transferenciaController" class="info position-absolute top-50 start-50 translate-middle" method="post">

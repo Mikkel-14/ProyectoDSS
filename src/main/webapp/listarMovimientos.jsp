@@ -50,6 +50,7 @@
         <div class="col-2 purpura2 d-flex flex-column justify-content-start">
             <a class="btn py-3 my-4 text-center " href="transferenciaController">Transferencia</a>
             <a class="btn py-3 my-4 text-center aOn" href="listarMovimientoController">Listar Movimientos</a>
+            <a class="btn py-3 my-4 text-center" href="cambiarContrasena.jsp">Cambiar Contraseña</a>
         </div>
     <div class="col-10">
         <div class="container-fluid d-flex flex-column justify-content-start" >
